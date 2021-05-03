@@ -5,12 +5,9 @@ class TodolistsController < ApplicationController
   end
 
   def create
-    # １. データを新規登録するためのインスタンス作成
-    list = List.new(list_params)
-    # ２. データをデータベースに保存するためのsaveメソッド実行
-    list.save
-    # ３. トップ画面へリダイレクト
-    redirect_to todolist_path(list.id)
+   list = List.new(list_params)
+   list.save
+   redirect_to todolist_path(list.id)
   end
 
   def index
@@ -34,8 +31,7 @@ class TodolistsController < ApplicationController
   private
   # ストロングパラメータ
   def list_params
-    params.require(:list).permit(:title, :body)
+   params.require(:list).permit(:title, :body, :image)
   end
-
 
 end
